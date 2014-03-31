@@ -24,7 +24,7 @@ class PushThread(threading.Thread):
                 message = self.message_queue.get()
 
                 try:
-                    print 'worker does his job which push message to gcm: ' + message.__str__()
+                    print 'worker does his job: ' + message.__str__()
                     reg_id=Contacts.ids[str(message.receiver)]
                     data = message.jsonify()
                     print data
@@ -32,7 +32,6 @@ class PushThread(threading.Thread):
                 except:
                     traceback.print_exc()
             else:
-                print 'no message here. worker is sleeping...'
                 time.sleep(5)
         print 'worker got off the work'
 

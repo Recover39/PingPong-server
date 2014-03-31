@@ -6,6 +6,7 @@ from worker import PushWorker
 print 'server init'
 app = Flask(__name__)
 push_worker = PushWorker.PushThread()
+push_worker.start()
 
 
 @app.route('/', methods=['POST'])
@@ -14,7 +15,7 @@ def index():
     sender = request_data['sender']
     receiver = request_data['receiver']
     message_data = request_data['messageData']
-    print 'Message accepted: sender = ' + sender + ', receiver = ' + receiver + ', messageData = ' + message_data
+    print 'Message accepted: sender=' + sender + ', receiver=' + receiver + ', messageData=' + message_data
     push_worker.put_message(Message(sender=sender, receiver=receiver, message_data=message_data))
 
     if not check_id(receiver):
@@ -22,9 +23,5 @@ def index():
 
     return jsonify(result=True)
 
-
 if __name__ == '__main__':
-    print 'push_worker start'
-    push_worker.start()
-    print 'server start'
-    app.run(threaded=True)
+    app.run()
