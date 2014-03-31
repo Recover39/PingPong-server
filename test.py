@@ -1,8 +1,29 @@
+# -*- coding: utf-8 -*-
 import requests
 import json
 
-load = {"key1": "value1", "key2": "value2"}
+load = {"sender": "Namhoon", "receiver": "Sugarpoint", "messageData": "Let the game begin"}
 print(load)
-r = requests.post('http://127.0.0.1:5000/', data=json.dumps(load), headers={"Content-Type": "application/json"})
-# print(r.status_code)
-# print(r.text)
+# r = requests.post('http://10.73.45.162:5000', data=json.dumps(load), headers={"Content-Type": "application/json"})
+r = requests.post('http://127.0.0.1:5000', data=json.dumps(load), headers={"Content-Type": "application/json"})
+print(r.status_code)
+print(r.text)
+
+# from model.GCMMessage import Message
+#
+# message = Message(receiver='a', sender='b', message_data='hello')
+# print (message)
+
+
+# import traceback
+# from gcm import GCM
+#
+# gcm = GCM('AIzaSyC3CwECHoUqHKNQXbndpRWPjgauYhXTUEI')
+# import Contacts
+# id = Contacts.ids['sender']
+# data = {'messageData': 'you give me the money too'}
+#
+# try:
+#     gcm.plaintext_request(registration_id=id, data=data)
+# except:
+#     traceback.print_exc()
