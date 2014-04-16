@@ -3,7 +3,7 @@ import requests
 import json
 
 # load = {"sender": "Namhoon", "receiver": "Sugarpoint", "messageData": "Let the game begin"}
-load = {"sender": "Namhoon", "receiver": "Sugarpoint", "messageData": "Let the game begin"}
+load = {"sender": "Namhoon", "receiver": "Sugarpoint", "messageData": "Good good ??"}
 print(load)
 r = requests.post('http://10.73.45.162:5000', data=json.dumps(load), headers={"Content-Type": "application/json"})
 # r = requests.post('http://127.0.0.1:5000', data=json.dumps(load), headers={"Content-Type": "application/json"})

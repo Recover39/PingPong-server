@@ -27,7 +27,6 @@ class PushThread(threading.Thread):
                     print 'worker does his job: ' + message.__str__()
                     reg_id=Contacts.ids[str(message.receiver)]
                     data = message.jsonify()
-                    print data
                     self.gcm.plaintext_request(registration_id=reg_id, data=data)
                 except:
                     traceback.print_exc()
